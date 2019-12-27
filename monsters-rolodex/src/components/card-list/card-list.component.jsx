@@ -1,10 +1,19 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { Card } from "../card/card.component"
 import "./card-list.styles.css"
 
-export const CardList = (props) => {
+export const CardList = ({ monsters, searchMonster }) => {
 
-   const { monsters, searchMonster } = props
+   CardList.propTypes = {
+      /* Passed down from App.js
+         Full array of monsters */
+      monsters: PropTypes.array,
+
+      /* Passed down from App.js
+         Search string from the SearchBox Component */
+      searchMonster: PropTypes.string
+   }
 
    const len = searchMonster.length
 
@@ -20,8 +29,8 @@ export const CardList = (props) => {
 
       <div className="card-list">
          {filteredMonsters.map((monster) => {
-            return <div>
-                  <Card key={monster.id} id={monster.id} monster={monster} />
+            return <div key={monster.id}>
+                  <Card monster={monster} />
                   <h2>{searchMonster}</h2>
                </div>
          })}
