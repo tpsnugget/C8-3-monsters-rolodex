@@ -1,9 +1,16 @@
 import React from "react"
+import PropTypes from "prop-types"
 import "./card.styles.css"
 
-export const Card = (props) => {
+export const Card = ({ monster }) => {
 
-   const {id, name, email} = props.monster
+   const { email, id, name } = monster
+
+   Card.propTypes = {
+      /* Passed down from CardList Component
+         Unique object used to get unique monster from robohash */
+         monster: PropTypes.object
+   }
 
    return(
       <div className="card-container">
